@@ -21,9 +21,18 @@ This repository provides a **one-click automated setup script** to install Docke
 ## Update dependencies 
 ```bash
 sudo apt-get update && sudo apt-get upgrade -y
+sudo apt install ufw curl
 ```
 ---
 
+## Allow Firewall
+```bash
+sudo ufw allow 22
+sudo ufw allow ssh
+sudo ufw allow 8443
+sudo ufw enable
+```
+---
 ## One-Liner Setup Command
 
 Run this command in your terminal:
@@ -33,6 +42,12 @@ curl -s https://raw.githubusercontent.com/codedialect/blockcast/main/blockcast_s
 ```
 
 ---
+
+## Check your city and country
+
+```bash
+curl ipinfo.io
+```
 
 ## What the Script Does
 
