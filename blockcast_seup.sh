@@ -80,6 +80,33 @@ else
   echo -e "${GREEN}${BOLD}Docker is already installed. Skipping installation.${RESET}"
 fi
 
+echo -e "${CYAN}${BOLD}--- Configuring UFW Firewall Rules ---${RESET}"
+
+# Check if ufw is installed, install if not
+if ! command -v ufw &>/dev/null; then
+  echo -e "${CYAN}Installing ufw...${RESET}"
+  sudo apt-get update -y
+  sudo apt-get install -y ufw
+fi
+
+# Allow necessary ports
+echo -e "${CYAN}Allowing ports 22 (SSH), 8443 (Blockcast UI)...${RESET}"
+sudo ufw allow 22
+sudo ufw allow 8443
+
+# Enable UFW if not already active
+UFW_STATUS=$(sudo ufw status | grep -i "Status: active")
+if [ -z "$UFW_STATUS" ]; then
+  echo -e "${CYAN}Enabling UFW firewall...${RESET}"
+  sudo ufw --force enable
+else
+  echo -e "${GREEN}UFW is already enabled.${RESET}"
+fi
+
+# Reload rules
+echo -e "${CYAN}Reloading UFW firewall rules...${RESET}"
+sudo ufw reload
+
 # ===============================
 # Step 2: Setup Project Directory
 # ===============================
@@ -169,6 +196,22 @@ docker compose exec blockcastd blockcastd init || {
   echo -e "${RED}Failed to initialize blockcastd. Check logs with: docker compose logs -f blockcastd${RESET}"
   exit 1
 }
+echo -e "${CYAN}${BOLD}--- Detecting Public IP and Location ---${RESET}"
 
+IP=$(curl -s ipv4.icanhazip.com)
+if [ -z "$IP" ]; then
+  echo -e "${RED}Failed to detect public IP address.${RESET}"
+else
+  echo -e "${GREEN}Your public IP is: ${BOLD}$IP${RESET}"
+  
+  # Fetch geolocation info
+  LOCATION=$(curl -s "https://ipinfo.io/${IP}/json" | jq -r '.city, .region, .country' 2>/dev/null | paste -sd ', ')
+  
+  if [ -n "$LOCATION" ]; then
+    echo -e "${CYAN}Detected Location: ${BOLD}$LOCATION${RESET}"
+  else
+    echo -e "${RED}Could not determine location from IP.${RESET}"
+  fi
+fi
 echo -e "${GREEN}${BOLD}🎉 Node initialized successfully!${RESET}"
 echo -e "${CYAN}Use the registration URL or copy the Hardware ID and Challenge Key to register manually.${RESET}"
