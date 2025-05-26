@@ -16,7 +16,6 @@ BOLD='\033[1m'
 # ===============================
 echo -e "${PURPLE}${BOLD}"
 echo -e "${CYAN}
- 
  ______              _         _                                             
 |  ___ \            | |       | |                   _                        
 | |   | |  ___    _ | |  ____ | | _   _   _  ____  | |_   ____   ____  _____ 
@@ -24,10 +23,8 @@ echo -e "${CYAN}
 | |   | || |_| |( (_| |( (/ / | | | || |_| || | | || |__( (/ / | |     / __/ 
 |_|   |_| \___/  \____| \____)|_| |_| \____||_| |_| \___)\____)|_|    (_____)                   
                                 
-                                                                                                                                
 ${BLUE}                      :: Powered by Noderhunterz ::
-${NC}"
-
+${RESET}"
 echo -e "${CYAN}${BOLD}--- Docker Environment Setup for Blockcast ---${RESET}"
 
 # ===============================
@@ -124,7 +121,7 @@ CUSTOM_PORT="$DEFAULT_PORT"
 read -p "$(echo -e "${CYAN}Do you want to change the default Watchtower port (${DEFAULT_PORT})? (y/n): ${RESET}")" change_port
 if [[ "$change_port" =~ ^[Yy]$ ]]; then
   read -p "$(echo -e "${CYAN}Enter the new port to expose Watchtower on (e.g., 8081): ${RESET}")" input_port
-  if [[ "$input_port" =~ ^[0-9]+$ ]]; then
+  if echo "$input_port" | grep -qE '^[0-9]+$'; then
     CUSTOM_PORT="$input_port"
     echo -e "${GREEN}Using custom Watchtower port: $CUSTOM_PORT${RESET}"
   else
@@ -213,5 +210,6 @@ else
     echo -e "${RED}Could not determine location from IP.${RESET}"
   fi
 fi
+
 echo -e "${GREEN}${BOLD}🎉 Node initialized successfully!${RESET}"
 echo -e "${CYAN}Use the registration URL or copy the Hardware ID and Challenge Key to register manually.${RESET}"
