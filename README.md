@@ -1,7 +1,11 @@
 
 # Blockcast CDN Gateway - One-Click Setup Script
 
-This repository provides a **one-click automated setup script** to install Docker (if missing) and deploy the [Blockcast](https://www.blockcast.network) CDN Gateway using Docker Compose.
+This repository provides a **one-click automated setup script** to install Docker (if missing) and deploy the [Blockcast](https://app.blockcast.network) CDN Gateway using Docker Compose.
+
+## Register here first and connect your phantom wallet before noving forward
+
+[Blockcast](https://app.blockcast.network)
 
 ---
 
@@ -21,7 +25,7 @@ This repository provides a **one-click automated setup script** to install Docke
 ## Update dependencies 
 ```bash
 sudo apt-get update && sudo apt-get upgrade -y
-sudo apt install ufw curl
+sudo apt install ufw git
 ```
 ---
 
@@ -92,12 +96,14 @@ docker compose exec blockcastd blockcastd init
 ## View Logs
 
 ```bash
-docker compose logs -f blockcastd
-docker compose logs -f control_proxy
-docker compose logs -f beacond
-docker compose logs -f watchtower
+docker logs blockcastd -f
 ```
+---
 
+## Restart your Blockcast
+```bash
+docker restart blockcastd
+```
 ---
 
 ## Requirements
