@@ -38,7 +38,7 @@ sudo ufw enable
 Run this command in your terminal:
 
 ```bash
-git clone https://https://github.com/CodeDialect/Blockcast.git
+git clone https://github.com/CodeDialect/Blockcast.git
 cd Blockcast/
 chmod +x blockcast_seup.sh
 ./blockcast_seup.sh
