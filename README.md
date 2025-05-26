@@ -17,6 +17,13 @@ This repository provides a **one-click automated setup script** to install Docke
 
 ---
 
+
+## Update dependencies 
+```bash
+sudo apt-get update && sudo apt-get upgrade -y
+```
+---
+
 ## One-Liner Setup Command
 
 Run this command in your terminal:
