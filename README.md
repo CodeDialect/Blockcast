@@ -3,7 +3,7 @@
 
 This repository provides a **one-click automated setup script** to install Docker (if missing) and deploy the [Blockcast](https://app.blockcast.network) CDN Gateway using Docker Compose.
 
-## Register here first and connect your phantom wallet before noving forward
+## Register here first and connect your phantom wallet before moving forward
 
 [Blockcast](https://app.blockcast.network)
 
