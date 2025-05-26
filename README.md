@@ -22,7 +22,7 @@ This repository provides a **one-click automated setup script** to install Docke
 Run this command in your terminal:
 
 ```bash
-curl -s https://raw.githubusercontent.com/your-username/blockcast-setup/main/blockcast-setup.sh | sudo bash
+curl -s https://raw.githubusercontent.com/codedialect/blockcast/main/blockcast-setup.sh | sudo bash
 ```
 
 ---
