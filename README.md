@@ -33,12 +33,15 @@ sudo ufw allow 8443
 sudo ufw enable
 ```
 ---
-## One-Liner Setup Command
+## Setup Command
 
 Run this command in your terminal:
 
 ```bash
-curl -s https://raw.githubusercontent.com/codedialect/blockcast/main/blockcast_seup.sh | sudo bash
+git clone https://https://github.com/CodeDialect/Blockcast.git
+cd Blockcast/
+chmod +x blockcast_seup.sh
+./blockcast_seup.sh
 ```
 
 ---
