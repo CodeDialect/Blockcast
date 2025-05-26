@@ -119,7 +119,7 @@ DEFAULT_PORT="8080"
 CUSTOM_PORT="$DEFAULT_PORT"
 
 read -p "$(echo -e "${CYAN}Do you want to change the default Watchtower port (${DEFAULT_PORT})? (y/n): ${RESET}")" change_port
-if [[ "$change_port" =~ ^[Yy]$ ]]; then
+if [ "$change_port" = "y" ] || [ "$change_port" = "Y" ]; then
   read -p "$(echo -e "${CYAN}Enter the new port to expose Watchtower on (e.g., 8081): ${RESET}")" input_port
   if echo "$input_port" | grep -qE '^[0-9]+$'; then
     CUSTOM_PORT="$input_port"
@@ -130,6 +130,7 @@ if [[ "$change_port" =~ ^[Yy]$ ]]; then
 else
   echo -e "${GREEN}Using default Watchtower port: $DEFAULT_PORT${RESET}"
 fi
+
 
 # ===============================
 # Step 4: Generate docker-compose.yml
