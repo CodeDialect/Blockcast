@@ -96,12 +96,6 @@ Visit the official site: [https://www.blockcast.network](https://www.blockcast.n
 
 ---
 
-## License
-
-MIT License free for personal and commercial use.
-
----
-
 ## Powered by
 
 ```
