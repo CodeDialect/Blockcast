@@ -5,7 +5,7 @@ This repository provides a **one-click automated setup script** to install Docke
 
 ## Register here first and connect your phantom wallet before moving forward
 
-[Blockcast](https://app.blockcast.network)
+[Blockcast](https://app.blockcast.network?referral-code=fJarpO)
 
 ---
 
